@@ -31,7 +31,6 @@
       line-height: 1.6;
     }
 
-    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
@@ -89,7 +88,6 @@
       color: #fff;
     }
 
-    /* ── PAGES ── */
     .page { display: none; }
     .page.active { display: block; animation: rise 0.35s ease; }
 
@@ -98,9 +96,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ══════════════════════
-       HOME / ABOUT
-    ══════════════════════ */
     .home-wrap {
       max-width: 920px;
       margin: 0 auto;
@@ -117,7 +112,6 @@
       text-align: center;
     }
 
-    /* typewriter identity line */
     .identity-line {
       display: flex;
       align-items: center;
@@ -161,7 +155,6 @@
       50%       { opacity: 0; }
     }
 
-    /* photo + about */
     .about-row {
       display: grid;
       grid-template-columns: 190px 1fr;
@@ -211,7 +204,6 @@
       margin-bottom: 0.85rem;
     }
 
-    /* skills */
     .skills-label {
       font-size: 0.72rem;
       font-weight: 500;
@@ -279,9 +271,6 @@
       line-height: 1.3;
     }
 
-    /* ══════════════════════
-       SHARED / OTHER PAGES
-    ══════════════════════ */
     .container {
       max-width: 920px;
       margin: 0 auto;
@@ -465,14 +454,13 @@
 <body>
 
   <nav>
-    <a class="nav-resume" href="resume.pdf" target="_blank">Resume</a>
+    <a class="nav-resume" href="resume.pdf" download>Resume</a>
     <ul class="nav-links">
       <li><button onclick="showPage('home')" id="nav-home" class="active">About</button></li>
       <li><button onclick="showPage('work')" id="nav-work">Work</button></li>
       <li><button onclick="showPage('sidequests')" id="nav-sidequests">Side Quests</button></li>
     </ul>
   </nav>
-
 
   <!-- HOME -->
   <div id="page-home" class="page active">
@@ -529,6 +517,13 @@
             <div class="skill-icon">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="1"/><path d="M8 21h8M12 17v4"/><path d="M7 7h5M7 11h3"/><path d="M16 9l2 2-2 2"/></svg>
             </div>
+            <span class="skill-name">PowerPoint</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 7h5c1.66 0 3 1.34 3 3s-1.34 3-3 3h-5V7z"/><path d="M13 13l3 4"/></svg>
+            </div>
+            <span class="skill-name">R</span>
           </div>
           <div class="skill-item">
             <div class="skill-icon">
@@ -566,8 +561,7 @@
     </div>
   </div>
 
-
-  <!-- PROJECTS -->
+  <!-- WORK -->
   <div id="page-work" class="page">
     <div class="container">
       <h1 class="page-title">My Work</h1>
@@ -586,19 +580,20 @@
             <a href="report.pdf" target="_blank" class="work-link" onclick="event.stopPropagation()">View full report →</a>
           </div>
         </div>
+
         <div class="work-card" onclick="window.open('bowl.pdf', '_blank')" style="cursor:pointer;">
           <div class="work-thumb" style="height:150px; overflow:hidden; background:#fff;">
-            <img src="bowl.svg" alt="Bowlero logo"
-              style="width:100%;height:100%;object-fit:contain;padding:1rem;" />
+            <img src="bowl.svg" alt="Bowlero logo" style="width:100%;height:100%;object-fit:contain;padding:1rem;" />
           </div>
           <div class="work-body">
             <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;white-space:nowrap;">Cornell Hedge Fund</p>
             <h3>Bowlero Corp. Long Pitch</h3>
             <p>I built a long thesis on Bowlero Corp. (NYSE: BOWL), looking at their operational efficiency, expansion strategy, and sports betting upside. I modeled a DCF with a $14.71 price target implying 40% upside, which the stock approached within months of the pitch.</p>
-            <div class="tags"><span class="tag">Financial Analysis</span><span class="tag">DCF</span><span class="tag">PowerPoint</span></div>
+            <div class="tags"><span class="tag">Financial Analysis</span><span class="tag">DCF</span></div>
             <a href="bowl.pdf" target="_blank" class="work-link" onclick="event.stopPropagation()">View presentation →</a>
           </div>
         </div>
+
         <div class="work-card" onclick="window.open('mbs.pdf', '_blank')" style="cursor:pointer;">
           <div class="work-thumb" style="height:150px; background: var(--accent-light); display:flex; align-items:center; justify-content:center;">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3a5c4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
@@ -607,10 +602,11 @@
             <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;white-space:nowrap;">Cornell Hedge Fund</p>
             <h3>Mortgage-Backed Securities Pitch</h3>
             <p>I researched and pitched an investment thesis on mortgage-backed securities to the Cornell Hedge Fund. I covered what went wrong in 2008, why the regulatory landscape had changed, and why I thought the timing was right for a long position.</p>
-            <div class="tags"><span class="tag">Financial Analysis</span><span class="tag">PowerPoint</span></div>
+            <div class="tags"><span class="tag">Financial Analysis</span></div>
             <a href="mbs.pdf" target="_blank" class="work-link" onclick="event.stopPropagation()">View presentation →</a>
           </div>
         </div>
+
         <div class="work-card">
           <div class="work-thumb" style="height:150px; background: var(--accent-light); display:flex; align-items:center; justify-content:center;">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3a5c4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -622,9 +618,10 @@
             <div class="tags"><span class="tag">WhereScape RED</span><span class="tag">Tableau</span><span class="tag">Data Modeling</span></div>
           </div>
         </div>
+
         <div class="work-card">
           <div class="work-thumb" style="height:150px; background: var(--accent-light); display:flex; align-items:center; justify-content:center;">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3a5c4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3a5c4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
           </div>
           <div class="work-body">
             <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sixth Street | Confidential</p>
@@ -633,6 +630,7 @@
             <div class="tags"><span class="tag">Python</span><span class="tag">API Integration</span><span class="tag">Data Visualization</span></div>
           </div>
         </div>
+
         <div class="work-card">
           <div class="work-thumb" style="height:150px; background: var(--accent-light); display:flex; align-items:center; justify-content:center;">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3a5c4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -640,7 +638,7 @@
           <div class="work-body">
             <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;">Confidential</p>
             <h3>Consignment Inventory & Buy Box Analysis</h3>
-            <p>I analyzed inventory data for a consignment shoe business to find where they were losing money and why. From there, I helped define a buy box — a framework for deciding which shoes were actually worth taking in store.</p>
+            <p>I analyzed inventory data for a consignment shoe business to find where they were losing money and why. From there, I helped define a buy box, a framework for deciding which shoes were actually worth taking in store.</p>
             <div class="tags"><span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Inventory Analysis</span></div>
           </div>
         </div>
@@ -648,6 +646,7 @@
     </div>
   </div>
 
+  <!-- SIDE QUESTS -->
   <div id="page-sidequests" class="page">
     <div class="container">
       <p class="page-eyebrow">Beyond the work</p>
@@ -696,7 +695,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // typewriter
     const words = ['Business Analyst', 'Runner', 'World Traveler'];
     const el = document.getElementById('typed-word');
     let wi = 0, ci = 0, deleting = false;
