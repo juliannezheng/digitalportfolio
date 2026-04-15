@@ -1,1 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julianne — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #faf9f6;
+      --surface: #fff;
+      --text: #1c1c1a;
+      --muted: #7a7972;
+      --accent: #3a5c4a;
+      --accent-light: #eaf0ec;
+      --border: rgba(0,0,0,0.1);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 52px;
+    }
+
+    .nav-resume {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-resume:hover { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .nav-links button {
+      background: none;
+      border: none;
+      border-right: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding: 7px 20px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links li:last-child button { border-right: none; }
+
+    .nav-links button:hover,
+    .nav-links button.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ── PAGES ── */
+    .page { display: none; }
+    .page.active { display: block; animation: rise 0.35s ease; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════
+       HOME / ABOUT
+    ══════════════════════ */
+    .home-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem 4rem;
+    }
+
+    .greeting {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 1.6rem;
+      text-align: center;
+    }
+
+    /* typewriter identity line */
+    .identity-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 4rem;
+      min-height: 2.4rem;
+    }
+
+    .identity-prefix {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2.8vw, 1.6rem);
+      font-weight: 300;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .identity-typed {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2.8vw, 1.6rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 1px;
+      min-width: 2px;
+    }
+
+    .identity-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 0.9s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* photo + about */
+    .about-row {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 4.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .about-row { grid-template-columns: 1fr; gap: 2rem; }
+      nav { padding: 0 1.25rem; }
+      .home-wrap { padding: 3rem 1.5rem 3rem; }
+    }
+
+    .photo-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--accent-light);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.5;
+      padding: 1rem;
+    }
+
+    .about-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+    }
+
+    .about-text p {
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 0.85rem;
+    }
+
+    /* skills */
+    .skills-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      border: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      background: var(--surface);
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 72px;
+      cursor: default;
+    }
+
+    .skill-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+
+    .skill-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.2s;
+    }
+
+    .skill-item:hover .skill-icon {
+      background: var(--accent-light);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .skill-item:hover .skill-icon svg { stroke: var(--accent); }
+
+    .skill-name {
+      font-size: 0.71rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* ══════════════════════
+       SHARED / OTHER PAGES
+    ══════════════════════ */
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem;
+    }
+
+    .page-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h1.page-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .page-lead {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .work-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+
+    .work-thumb {
+      height: 150px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+    }
+
+    .work-body { padding: 1.25rem; }
+
+    .work-body h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .work-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.75rem; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.71rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 3px 9px;
+      margin-right: 4px;
+      margin-bottom: 4px;
+    }
+
+    .work-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .work-link:hover { text-decoration: underline; }
+
+    .sq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sq-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: transform 0.2s;
+    }
+
+    .sq-card:hover { transform: translateY(-2px); }
+    .sq-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+
+    .sq-card h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .sq-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    .fun-facts {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+    }
+
+    .fun-facts h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .fun-facts ol { padding-left: 1.2rem; color: var(--muted); font-size: 0.93rem; line-height: 2.1; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-resume" href="resume.pdf" target="_blank">Resume</a>
+    <ul class="nav-links">
+      <li><button onclick="showPage('home')" id="nav-home" class="active">About</button></li>
+      <li><button onclick="showPage('work')" id="nav-work">Work</button></li>
+      <li><button onclick="showPage('sidequests')" id="nav-sidequests">Side Quests</button></li>
+    </ul>
+  </nav>
+
+
+  <!-- HOME -->
+  <div id="page-home" class="page active">
+    <div class="home-wrap">
+
+      <h1 class="greeting">Hi, I'm Julianne.</h1>
+
+      <div class="identity-line">
+        <span class="identity-prefix">I'm a</span>
+        <span class="identity-typed" id="typed-word"></span><span class="identity-cursor"></span>
+      </div>
+
+      <div class="about-row">
+        <div>
+          <div class="photo-circle">
+            <!-- Replace contents with:
+            <img src="your-photo.jpg" alt="Julianne"
+              style="width:100%;height:100%;object-fit:cover;border-radius:50%;" /> -->
+            your photo here
+          </div>
+        </div>
+
+        <div>
+          <p class="about-label">About me</p>
+          <div class="about-text">
+            <p>
+              I'm an energetic, hard-working business analyst who loves turning messy problems
+              into clean solutions — and finding adventure everywhere in between.
+            </p>
+            <p>
+              When I'm not deep in data or stakeholder meetings, you'll find me logging miles
+              on trails, planning my next trip somewhere I've never been, or getting into a
+              good side project.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="skills-label">Skills &amp; tools</p>
+        <div class="skills-row">
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+            </div>
+            <span class="skill-name">Financial Analysis</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/><path d="M15 13h3M15 17h3M6 13h3M6 17h3"/></svg>
+            </div>
+            <span class="skill-name">Excel</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="1"/><path d="M8 21h8M12 17v4"/><path d="M7 7h5M7 11h3"/><path d="M16 9l2 2-2 2"/></svg>
+            </div>
+            <span class="skill-name">PowerPoint</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            </div>
+            <span class="skill-name">Python</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="13" width="4" height="8" rx="1"/><rect x="10" y="8" width="4" height="13" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg>
+            </div>
+            <span class="skill-name">Tableau</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="4"/><path d="M3 12c0 2.21 4.03 4 9 4s9-1.79 9-4"/><path d="M3 12v4c0 2.21 4.03 4 9 4s9-1.79 9-4v-4"/></svg>
+            </div>
+            <span class="skill-name">SQL</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4z"/><path d="M8 20h8M12 16v4"/><path d="M8 8h2M8 12h8M14 8h2"/></svg>
+            </div>
+            <span class="skill-name">HTML / CSS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- PROJECTS -->
+  <div id="page-work" class="page">
+    <div class="container">
+      <p class="page-eyebrow">My work</p>
+      <h1 class="page-title">Projects</h1>
+      <p class="page-lead">A selection of work I'm proud of — professional projects, analyses, and relevant side projects.</p>
+
+      <div class="work-grid">
+        <div class="work-card">
+          <div class="work-thumb">📊</div>
+          <div class="work-body">
+            <h3>Project Name</h3>
+            <p>Short description of what this project was, the problem you solved, and your role.</p>
+            <div><span class="tag">Business Analysis</span><span class="tag">Excel</span></div>
+            <a href="#" class="work-link">View project →</a>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-thumb">📈</div>
+          <div class="work-body">
+            <h3>Another Project</h3>
+            <p>What was the context, what did you do, and what was the outcome?</p>
+            <div><span class="tag">SQL</span><span class="tag">Tableau</span></div>
+            <a href="#" class="work-link">View project →</a>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-thumb">✦</div>
+          <div class="work-body">
+            <h3>Add yours here</h3>
+            <p>Duplicate a card and fill in your details. Link to GitHub, a PDF, or a case study.</p>
+            <div><span class="tag">Tag</span></div>
+            <a href="#" class="work-link">View project →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FUN / SIDE QUESTS -->
+  <div id="page-sidequests" class="page">
+    <div class="container">
+      <p class="page-eyebrow">Beyond the work</p>
+      <h1 class="page-title">Side Quests</h1>
+      <p class="page-lead">The things that make me, me — outside of spreadsheets and standups.</p>
+
+      <div class="sq-grid">
+        <div class="sq-card">
+          <div class="sq-icon">🏃‍♀️</div>
+          <h3>Running</h3>
+          <p>How long you've been running, races you've done, what you love about it.</p>
+        </div>
+        <div class="sq-card">
+          <div class="sq-icon">✈️</div>
+          <h3>World Travel</h3>
+          <p>Where have you been? Where are you going next? Specific details are memorable.</p>
+        </div>
+        <div class="sq-card">
+          <div class="sq-icon">📚</div>
+          <h3>An interest</h3>
+          <p>Reading, cooking, a podcast — be specific and genuine.</p>
+        </div>
+        <div class="sq-card">
+          <div class="sq-icon">🧩</div>
+          <h3>Another one</h3>
+          <p>The more specific you are, the more you'll stand out. Swap this for something real.</p>
+        </div>
+      </div>
+
+      <div class="fun-facts">
+        <h3>A few quick facts</h3>
+        <ol>
+          <li>Replace this with something surprising or specific about yourself.</li>
+          <li>A weird skill, a strong opinion, or an unexpected achievement.</li>
+          <li>"I've run X half marathons" beats "I like running."</li>
+          <li>Keep it light and true to your voice.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Built with GitHub Pages &nbsp;·&nbsp; &copy; <span id="year"></span> Julianne
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // typewriter
+    const words = ['Business Analyst', 'Runner', 'World Traveler'];
+    const el = document.getElementById('typed-word');
+    let wi = 0, ci = 0, deleting = false;
+
+    function tick() {
+      const word = words[wi];
+      if (!deleting) {
+        el.textContent = word.slice(0, ++ci);
+        if (ci === word.length) { deleting = true; setTimeout(tick, 1800); return; }
+        setTimeout(tick, 80);
+      } else {
+        el.textContent = word.slice(0, --ci);
+        if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(tick, 400); return; }
+        setTimeout(tick, 45);
+      }
+    }
+    setTimeout(tick, 600);
+
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+      document.getElementById('page-' + id).classList.add('active');
+      document.getElementById('nav-' + id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
