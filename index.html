@@ -384,12 +384,19 @@
       transition: background 0.2s, color 0.2s;
     }
     .modal-close:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    h1.page-title {
       font-family: var(--serif);
       font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 300;
       color: var(--text);
       margin-bottom: 1rem;
     }
+
+    .about-text strong {
+      font-weight: 600;
+    }
+
     .page-lead {
       font-family: var(--serif);
       font-size: 1.1rem;
@@ -539,7 +546,7 @@
           <p class="about-label">About me</p>
           <div class="about-text">
             <p>
-              Hello! I'm a senior at Cornell University studying Information Science with a 
+              Hello! I'm a senior at <strong>Cornell University</strong> studying <strong>Information Science</strong> with a 
               background in finance and business analytics. I love tackling business problems 
               with data and telling the story behind the numbers.
             </p>
