@@ -6,7 +6,7 @@
   <title>Julianne — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -17,8 +17,8 @@
       --accent: #3a5c4a;
       --accent-light: #eaf0ec;
       --border: rgba(0,0,0,0.1);
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Jost', sans-serif;
+      --serif: 'Inter', sans-serif;
+      --sans: 'Inter', sans-serif;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -106,7 +106,7 @@
     .greeting {
       font-family: var(--serif);
       font-size: clamp(3rem, 8vw, 5.5rem);
-      font-weight: 300;
+      font-weight: 600;
       line-height: 1.05;
       color: var(--text);
       margin-bottom: 1.6rem;
@@ -130,8 +130,7 @@
     .identity-typed {
       font-family: var(--serif);
       font-size: clamp(1.1rem, 2.8vw, 1.6rem);
-      font-weight: 400;
-      font-style: italic;
+      font-weight: 500;
       color: var(--text);
       border-bottom: 2px solid var(--accent);
       padding-bottom: 1px;
@@ -210,7 +209,6 @@
       align-items: center;
       gap: 0.5rem;
       width: 72px;
-      cursor: default;
     }
     .skill-icon {
       width: 54px;
@@ -221,7 +219,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
     }
     .skill-icon svg {
       width: 22px;
@@ -231,14 +228,7 @@
       stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
-      transition: stroke 0.2s;
     }
-    .skill-item:hover .skill-icon {
-      background: var(--accent-light);
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
-    .skill-item:hover .skill-icon svg { stroke: var(--accent); }
     .skill-name {
       font-size: 0.71rem;
       color: var(--muted);
@@ -546,7 +536,7 @@
           <p class="about-label">About me</p>
           <div class="about-text">
             <p>
-              Hello! I'm a senior at <strong>Cornell University</strong> studying <strong>Information Science</strong> with a 
+              Hello! I'm a senior at <strong style="font-weight:900;">Cornell University</strong> studying <strong style="font-weight:900;">Information Science</strong> with a 
               background in finance and business analytics. I love tackling business problems 
               with data and telling the story behind the numbers.
             </p>
@@ -682,7 +672,7 @@
       <div class="modal-body">
         <h2>The Digitization of Reading</h2>
         <p class="modal-label">Coursework</p>
-        <p>I dug into 350,000+ checkout records from the Seattle Public Library to see how COVID-19 changed the way people read. I built trend visualizations across six genres to show the shift from physical to digital from 2006 to 2025.</p>
+        <p>I dug into 350,000+ checkout records from the Seattle Public Library to see how COVID-19 changed the way people read. I built trend visualizations across six genres to show the shift from physical to digital from 2006 to 2025. As an individual project, it taught me how to take full ownership over each step of the data analysis process.</p>
         <p style="font-size:0.93rem;color:var(--accent);margin-bottom:0.5rem;"><a href="mailto:jgz33@cornell.edu" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">Fellow reader? Let's connect!</a></p>
         <div class="tags"><span class="tag">R</span><span class="tag">Data Visualization</span></div>
         <a href="report.pdf" target="_blank" class="work-link">View full report →</a>
@@ -699,7 +689,7 @@
       <div class="modal-body">
         <h2>Bowlero Corp. Long Pitch</h2>
         <p class="modal-label">Cornell Hedge Fund</p>
-        <p>I built a long thesis on Bowlero Corp. (NYSE: BOWL), looking at their operational efficiency, expansion strategy, and sports betting upside. I modeled a DCF with a $14.71 price target implying 40% upside, which the stock approached within months of the pitch.</p>
+        <p>I built a long thesis on Bowlero Corp. (NYSE: BOWL), looking at their operational efficiency, expansion strategy, and sports betting upside. I modeled a DCF with a $14.71 price target implying 40% upside, which the stock approached within months of the pitch. There was no hierarchy within our team, which pushed me to communicate my assumptions clearly and build on my teammates' ideas to come up with our final thesis.</p>
         <p style="font-size:0.93rem;color:var(--accent);margin-bottom:0.5rem;"><a href="mailto:jgz33@cornell.edu" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">If you love a good investment thesis, I'd love to chat!</a></p>
         <div class="tags"><span class="tag">Financial Analysis</span><span class="tag">Excel</span><span class="tag">Teamwork</span></div>
         <a href="bowl.pdf" target="_blank" class="work-link">View presentation →</a>
@@ -716,7 +706,7 @@
       <div class="modal-body">
         <h2>Mortgage-Backed Securities Pitch</h2>
         <p class="modal-label">Cornell Hedge Fund</p>
-        <p>I researched and pitched an investment thesis on mortgage-backed securities to the Cornell Hedge Fund. I covered what went wrong in 2008, why the regulatory landscape had changed, and why I thought the timing was right for a long position.</p>
+        <p>I researched and pitched an investment thesis on mortgage-backed securities to the Cornell Hedge Fund. I covered what went wrong in 2008, why the regulatory landscape had changed, and why I thought the timing was right for a long position. Since this was a larger group project, I stepped up as a leader, allocating responsibilities across the team and making sure every piece came together into a polished final presentation.</p>
         <p style="font-size:0.93rem;color:var(--accent);margin-bottom:0.5rem;"><a href="mailto:jgz33@cornell.edu" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">Into financial markets? Let's talk!</a></p>
         <div class="tags"><span class="tag">Financial Analysis</span><span class="tag">Teamwork</span></div>
         <a href="mbs.pdf" target="_blank" class="work-link">View presentation →</a>
@@ -733,7 +723,7 @@
       <div class="modal-body">
         <h2>Data Access & Security Analytics</h2>
         <p class="modal-label">Cornell Data Governance | Confidential</p>
-        <p>I built a proof-of-concept BI system for Cornell's IT Security and Audit teams to track who had access to what data across a fragmented multi-database environment. I designed the data model in WhereScape RED and built a Tableau dashboard to surface the risks.</p>
+        <p>I built a proof-of-concept BI system for Cornell's IT Security and Audit teams to track who had access to what data across a fragmented multi-database environment. I designed the data model in WhereScape RED and built a Tableau dashboard to surface the risks. This was a course project where my team members came in with varying technical backgrounds, so I took on the role of explaining concepts and walking them through the more technical pieces, which ended up deepening my own understanding in the process.</p>
         <p style="font-size:0.93rem;color:var(--accent);margin-bottom:0.5rem;"><a href="mailto:jgz33@cornell.edu" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">Working in BI or data governance? Let's connect!</a></p>
         <div class="tags"><span class="tag">WhereScape RED</span><span class="tag">Tableau</span><span class="tag">SQL</span><span class="tag">Data Modeling</span><span class="tag">Teamwork</span></div>
         <button class="modal-close" onclick="closeModalBtn('modal-bi')">Close</button>
@@ -765,7 +755,7 @@
       <div class="modal-body">
         <h2>Consignment Inventory & Buy Box Analysis</h2>
         <p class="modal-label">Confidential</p>
-        <p>I analyzed inventory data for a consignment shoe business to find where they were losing money and why. From there, I helped define a buy box, a framework for deciding which shoes were actually worth taking in store.</p>
+        <p>I analyzed inventory data for a consignment shoe business to find where they were losing money and why. From there, I helped define a buy box, a framework for deciding which shoes were actually worth taking in store. This was one of the first professional projects I worked on, and watching the project managers lead gave me my first real model for how to structure a problem, delegate, and drive a team.</p>
         <p style="font-size:0.93rem;color:var(--accent);margin-bottom:0.5rem;"><a href="mailto:jgz33@cornell.edu" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">Into retail analytics? Let's connect!</a></p>
         <div class="tags"><span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Teamwork</span></div>
         <button class="modal-close" onclick="closeModalBtn('modal-consignment')">Close</button>
@@ -782,22 +772,24 @@
         <div class="sq-card">
           <img src="running.png" alt="Running" style="width:100%;height:180px;object-fit:cover;border-radius:4px;margin-bottom:1rem;" />
           <h3>Running</h3>
-          <p>I've been running for 8 years and recently finished the Syracuse Half Marathon!</p>
+          <p>I've been running for 8 years, recently finished the Syracuse Half Marathon, and am currently training for the <strong>DC Marine Corps Marathon</strong> in October! Long races require meticulously planned schedules and commitment even on rainy days.</p>
+          <p style="font-size:0.88rem;color:var(--accent);margin-top:0.5rem;"><a href="mailto:jgz33@cornell.edu" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">Want to see my marathon training plan? Let's connect!</a></p>
         </div>
         <div class="sq-card">
           <img src="travel.png" alt="Travel" style="width:100%;height:180px;object-fit:cover;border-radius:4px;margin-bottom:1rem;" />
           <h3>World Travel</h3>
-          <p>I've been to ten different countries and most recently came back from a week in France.</p>
+          <p>I've been to ten different countries and most recently came back from a week in France. Traveling as a student means every trip is an exercise in <strong>budget management</strong>, from researching the best deals, to allocating spend across flights, accommodation, and food, and making the most of every dollar.</p>
         </div>
         <div class="sq-card">
           <img src="dinner.png" alt="Dinner parties" style="width:100%;height:180px;object-fit:cover;border-radius:4px;margin-bottom:1rem;" />
           <h3>Dinner Parties</h3>
-          <p>I love hosting dinner parties. There's something special about bringing people together over a good meal.</p>
+          <p>I love hosting dinner parties. There's something special about bringing people together over a good meal and pulling one off well is always an exercise in <strong>project management</strong>. Coordinating courses, timing, dietary restrictions, and atmosphere all present unique challenges but seeing my guests leave happy and full is well worth the effort.</p>
         </div>
         <div class="sq-card">
           <img src="perplexity.png" alt="Perplexity" style="width:100%;height:180px;object-fit:cover;border-radius:4px;margin-bottom:1rem;" />
           <h3>Perplexity Campus Ambassador</h3>
-          <p>I'm a campus ambassador for Perplexity at Cornell, helping bring AI tools to students on campus.</p>
+          <p>I'm a campus ambassador for Perplexity at Cornell, helping bring AI tools to students on campus. It's taught me how to <strong>translate complex technology into everyday use cases</strong>.</p>
+          <p style="font-size:0.88rem;color:var(--accent);margin-top:0.5rem;"><a href="mailto:jgz33@cornell.edu" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">If you're curious how Perplexity's agentic features can optimize <em>your</em> workflows, feel free to reach out!</a></p>
         </div>
       </div>
     </div>
